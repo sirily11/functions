@@ -1,4 +1,4 @@
-import { Message, service } from "./codeblock";
+import { Message, service } from "../../pages/api/codeblock";
 
 describe("Given a handler", () => {
   test("When parsing succeed", async () => {
