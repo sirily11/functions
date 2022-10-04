@@ -12,7 +12,7 @@ describe("Given a handler", () => {
       language: "solidity",
     };
     const result = service(message);
-    const data = JSON.parse(result.body);
+    const data = result.body;
     expect(data.blocks.length).toBe(1);
   });
 

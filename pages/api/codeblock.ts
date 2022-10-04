@@ -40,7 +40,7 @@ export function service({
 
       return {
         statusCode: 200,
-        body: JSON.stringify(data),
+        body: data,
       };
     }
 
