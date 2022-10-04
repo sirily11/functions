@@ -79,3 +79,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
   res.status(response.statusCode).json(response.body);
 }
+
+export const config = {
+  runtime: "experimental-edge",
+};
