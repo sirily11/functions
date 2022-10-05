@@ -327,10 +327,10 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@etherdata-blockchain/codeblock@^1.1.4":
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/@etherdata-blockchain/codeblock/-/codeblock-1.1.4.tgz#8028d126699329e46179abcee7da985486ae79ee"
-  integrity sha512-5n6zdrbamM5lik5NNlTy/uy+/DfaUKQ2Hrvfm/CucnsRdrRCwrX2/ymcR1F0cRmIIRhlDYaeM4H00f9WYR6R+A==
+"@etherdata-blockchain/codeblock@^1.1.5":
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/@etherdata-blockchain/codeblock/-/codeblock-1.1.5.tgz#d1da27c0798ae045f52913eebd0fe206b11fe2ad"
+  integrity sha512-Vxx0Mfz+PXXXWcsg0kF1Ukw9NWowqCrNzwpGPpgQyihHqSz5Yf+dFiD+frFMisNho9ujsToqOvz/XblMXDRpxQ==
   dependencies:
     tree-sitter "^0.20.0"
     tree-sitter-solidity "^1.2.0"

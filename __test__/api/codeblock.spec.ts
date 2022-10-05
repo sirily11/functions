@@ -60,7 +60,7 @@ describe("Given a handler", () => {
     const result = service(message);
     expect(result.statusCode).toBe(500);
     expect(result.body).toStrictEqual({
-      message: "Error: Language python not supported",
+      message: "Error: Unsupported language: python",
     });
   });
 });
