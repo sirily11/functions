@@ -1,6 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { CodeBlock, SolidityParser } from "@etherdata-blockchain/codeblock";
 import type { NextApiRequest, NextApiResponse } from "next";
+import NextCors from "nextjs-cors";
 
 export interface Message {
   code: string;
@@ -73,9 +74,18 @@ export function service({
   }
 }
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   const data = req.body;
   const response = service(data);
+
+  await NextCors(req, res, {
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+    origin: "*",
+    optionsSuccessStatus: 200,
+  });
 
   res.status(response.statusCode).json(response.body);
 }
