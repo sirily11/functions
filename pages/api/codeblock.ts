@@ -1,5 +1,8 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { CodeBlock, SolidityParser } from "@etherdata-blockchain/codeblock";
+import {
+  CodeBlock,
+  getParserByLanguage,
+} from "@etherdata-blockchain/codeblock";
 import type { NextApiRequest, NextApiResponse } from "next";
 import NextCors from "nextjs-cors";
 
@@ -13,15 +16,6 @@ export interface Message {
 interface HandlerResponse {
   statusCode: number;
   body: any;
-}
-
-function getParserByLanguage(language: string) {
-  switch (language) {
-    case "solidity":
-      return new SolidityParser();
-    default:
-      throw new Error(`Language ${language} not supported`);
-  }
 }
 
 export function service({
