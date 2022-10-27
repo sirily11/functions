@@ -3,7 +3,7 @@ import { ethers } from "ethers";
 
 describe("Given a handler", () => {
   beforeAll(() => {
-    process.env.PASSWORD = "password";
+    process.env.METAMASK_AUTHENTICATION_PASSWORD = "password";
   });
 
   test("When authentication failed", async () => {
