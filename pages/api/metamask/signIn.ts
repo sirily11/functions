@@ -26,7 +26,7 @@ export function service({
   try {
     const signedAddress = ethers.utils.verifyMessage(message, signature);
     if (address === signedAddress) {
-      let password = process.env.PASSWORD!;
+      let password = process.env.METAMASK_AUTHENTICATION_PASSWORD!;
       const payload: JWTPayload = {
         userId: address,
       };
