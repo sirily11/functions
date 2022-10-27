@@ -15,7 +15,7 @@ interface JWTPayload {
 
 interface HandlerResponse {
   statusCode: number;
-  body: string;
+  body: any;
 }
 
 export function service({
@@ -33,19 +33,19 @@ export function service({
       let token = jwt.sign(payload, password);
       return {
         statusCode: 200,
-        body: JSON.stringify({
+        body: {
           message: "OK",
           accessToken: token,
-        }),
+        },
       };
     }
   } catch (err) {}
 
   return {
     statusCode: 403,
-    body: JSON.stringify({
+    body: {
       message: "Forbidden",
-    }),
+    },
   };
 }
 

@@ -28,7 +28,6 @@ describe("Given a handler", () => {
     };
     const response = service(message);
     expect(response.statusCode).toBe(200);
-    let body = JSON.parse(response.body);
   });
 
   test("When authentication failed", async () => {
