@@ -11,7 +11,6 @@ export interface Message {
 
 interface JWTPayload {
   userId: string;
-  exp: number;
 }
 
 interface HandlerResponse {
@@ -30,9 +29,8 @@ export function service({
       let password = process.env.METAMASK_AUTHENTICATION_PASSWORD!;
       const payload: JWTPayload = {
         userId: address,
-        exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24 * 7,
       };
-      let token = jwt.sign(payload, password);
+      let token = jwt.sign(payload, password, { expiresIn: "7d" });
       return {
         statusCode: 200,
         body: {
@@ -41,7 +39,9 @@ export function service({
         },
       };
     }
-  } catch (err) {}
+  } catch (err) {
+    console.error(err);
+  }
 
   return {
     statusCode: 403,
