@@ -155,7 +155,7 @@ export async function service(body: Body) {
       let tempAbi = output.contracts["contract.sol"][cn].abi;
 
       if (tempBytecode.length > 0) {
-        bytecode = tempBytecode;
+        bytecode = `0x${tempBytecode}`;
         abi = tempAbi;
         break;
       }
