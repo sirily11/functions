@@ -163,7 +163,7 @@ export async function service(body: Body) {
     }
 
     const contract = output.contracts["contract.sol"][body.contractName];
-    bytecode = "0x" + contract.evm.bytecode.object;
+    bytecode = "0x" + contract.evm.deployedBytecode.object;
     abi = contract.abi;
 
     return {
