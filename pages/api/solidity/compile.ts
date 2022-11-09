@@ -10,6 +10,7 @@ import { Solc } from "../../../lib/solc";
 const solcURL = "https://solc-bin.ethereum.org/bin/";
 
 interface Body {
+  contractName: string;
   source: string;
   compilerVersion?: string;
 }
@@ -107,7 +108,19 @@ export async function service(body: Body) {
     let abi: any = [];
     let returnedCompilerVersion: string | undefined = undefined;
 
+    if (!body.contractName) {
+      return {
+        statusCode: 400,
+        body: {
+          errors: ["Contract name is required"],
+        },
+      };
+    }
+
+    console.log("Compiling", body.contractName);
+
     if (body.compilerVersion) {
+      console.log("Using compiler version", body.compilerVersion);
       const solc = new Solc();
       const remoteCompiler = await solc.loadRemoteCompiler(
         `v${body.compilerVersion}`
@@ -149,17 +162,9 @@ export async function service(body: Body) {
       }
     }
 
-    for (let cn in output.contracts["contract.sol"]) {
-      let tempBytecode =
-        output.contracts["contract.sol"][cn].evm.bytecode.object;
-      let tempAbi = output.contracts["contract.sol"][cn].abi;
-
-      if (tempBytecode.length > 0) {
-        bytecode = `0x${tempBytecode}`;
-        abi = tempAbi;
-        break;
-      }
-    }
+    const contract = output.contracts["contract.sol"][body.contractName];
+    bytecode = "0x" + contract.evm.bytecode.object;
+    abi = contract.abi;
 
     return {
       statusCode: 200,
