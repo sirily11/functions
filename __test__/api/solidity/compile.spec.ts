@@ -34,7 +34,7 @@ describe("Given a soldity compiler", () => {
         return 42;
         }
     }`;
-    const response = await service({ source });
+    const response = await service({ source, contractName: "Test" });
     expect(response.statusCode).toBe(200);
     expect(response.body.bytecode).toBeDefined();
     expect(response.body.abi).toBeDefined();
@@ -47,7 +47,7 @@ describe("Given a soldity compiler", () => {
         return 42;
         }
     }`;
-    const response = await service({ source });
+    const response = await service({ source, contractName: "Test" });
     expect(response.statusCode).toBe(200);
     expect(response.body.bytecode).toBeDefined();
     expect(response.body.abi).toBeDefined();
