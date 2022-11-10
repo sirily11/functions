@@ -40,7 +40,7 @@ jobs:
           file: ./docker/services/service.dockerfile
           platforms: linux/amd64
           push: false
-          tags: ghcr.io/${{ github.repository }}:${{ github.event.release.tag_name }}
+          tags: ghcr.io/${{ github.repository }}:latest
           build-args: |
             APP_NAME=${{ matrix.app }}
           cache-from: type=gha
