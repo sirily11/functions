@@ -12,14 +12,23 @@ interface Response {
   statusCode: number;
   body: {
     names: string[];
+    errors?: string[];
   };
 }
 
 export function service({ source }: Message): Response {
+  if (source === undefined) {
+    return {
+      statusCode: 400,
+      body: {
+        names: [],
+        errors: ["source is required"],
+      },
+    };
+  }
   const parser = new TreeSitter();
   parser.setLanguage(Solidity);
   const tree = parser.parse(source);
-  console.log(tree.rootNode.toString());
   const query = new Query(
     Solidity,
     ` (
@@ -30,7 +39,6 @@ export function service({ source }: Message): Response {
     `
   );
   const matches = query.matches(tree.rootNode);
-  console.log(matches);
   const names = matches.map((match) => match.captures[0].node.text);
 
   return {
