@@ -37,7 +37,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: ./
-          file: ./docker/services/service.dockerfile
+          file: ./Dockerfile
           platforms: linux/amd64
           push: false
           tags: ghcr.io/${{ github.repository }}:latest
