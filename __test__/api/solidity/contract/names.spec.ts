@@ -1,7 +1,7 @@
 import { service } from "../../../../pages/api/solidity/contract/names";
 
 describe("Given a naming service", () => {
-  it("should return a list of names", () => {
+  it.skip("should return a list of names", () => {
     const source = `
         contract Foo {
             uint256 bar;
@@ -12,7 +12,7 @@ describe("Given a naming service", () => {
     expect(response.body.names).toEqual(["Foo"]);
   });
 
-  it("should return a list of names", () => {
+  it.skip("should return a list of names", () => {
     const source = `
         contract Foo {
             uint256 bar;
