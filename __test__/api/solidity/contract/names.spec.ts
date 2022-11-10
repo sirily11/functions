@@ -1,7 +1,10 @@
-import { service } from "../../../../pages/api/solidity/contract/names";
+import fs from "fs";
 
 describe("Given a naming service", () => {
   it.skip("should return a list of names", () => {
+    const {
+      service,
+    } = require("../../../../pages/api/solidity/contract/names");
     const source = `
         contract Foo {
             uint256 bar;
@@ -13,6 +16,9 @@ describe("Given a naming service", () => {
   });
 
   it.skip("should return a list of names", () => {
+    const {
+      service,
+    } = require("../../../../pages/api/solidity/contract/names");
     const source = `
         contract Foo {
             uint256 bar;
